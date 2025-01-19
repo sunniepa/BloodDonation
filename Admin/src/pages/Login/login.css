@@ -1,0 +1,43 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff; /* Màu nền */
+    overflow: hidden!important; /* Ngăn chặn cuộn */
+    padding: 20px !important;
+}
+
+.form-container {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 35%; /* Chiều rộng cho form là 35% */
+    margin-right: 20px; /* Khoảng cách giữa form và hình ảnh */
+}
+
+.form-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1890ff; /* Màu sắc cho tiêu đề */
+}
+
+.form-input {
+    border-radius: 5px; /* Bo tròn góc cho input */
+}
+
+.login-button {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px; /* Bo tròn góc cho nút */
+}
+
+.image-container {
+    flex: 1; /* Để hình ảnh chiếm không gian còn lại */
+    width: 65%; /* Chiều rộng cho hình ảnh là 65% */
+}
+
+.login-image {
+    width: 100%; /* Đảm bảo hình ảnh chiếm toàn bộ chiều rộng */
+    border-radius: 10px; /* Bo tròn góc cho hình ảnh */
+}

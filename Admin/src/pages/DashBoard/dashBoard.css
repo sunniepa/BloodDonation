@@ -1,0 +1,80 @@
+.container {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.card_total{
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.03);
+    border-radius: 5px;
+    background: #fff;
+}
+
+.card_number{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.number_total{
+    color: #56606e;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.title_total{
+    color: #8a909d;
+    font-size: 15px;
+}
+
+.chart{
+    margin-top: 30px;
+}
+
+.title{
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.dashboard-container {
+    min-height: 100vh;
+}
+
+.card-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.stat-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.2s;
+    position: relative;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-icon {
+    font-size: 40px;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.stat-card h2 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.stat-card p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+}

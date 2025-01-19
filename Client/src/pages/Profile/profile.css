@@ -1,0 +1,27 @@
+.profile-container {
+    padding: 20px;
+    background-color: #f0f2f5;
+}
+
+.profile-card {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-card-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.profile-card p {
+    margin-bottom: 8px;
+}
+
+.profile-card a {
+    color: #1890ff;
+    text-decoration: none;
+}
+
+.profile-card a:hover {
+    text-decoration: underline;
+}

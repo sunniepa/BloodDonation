@@ -1,0 +1,109 @@
+.total{
+    padding: 30px;
+    background-color: #ffffff;
+}
+.chatbot-container {
+    width: 100%;
+    max-width: 800px;
+    height: 65vh;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin: auto;
+}
+
+.chatbot-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.chatbot-header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #007bff;
+}
+
+.chatbot-header p {
+    margin: 5px 0 0;
+    font-size: 16px;
+    color: #555;
+}
+
+.chatbot-messages {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #ccc #ffffff;
+}
+
+.chatbot-messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chatbot-messages::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+.chatbot-messages::-webkit-scrollbar-track {
+    background-color: #ffffff;
+}
+
+.message {
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px 0;
+    max-width: 75%;
+    word-wrap: break-word;
+    position: relative;
+}
+
+.user {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+    border-radius: 10px 10px 0 10px;
+    margin-left: auto;
+}
+
+.bot {
+    background-color: #e0e0e0;
+    color: #333;
+    align-self: flex-start;
+    border-radius: 10px 10px 10px 0;
+    margin-right: auto;
+}
+
+input {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #333;
+    flex: 1;
+    transition: background-color 0.3s;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

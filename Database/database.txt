@@ -1,0 +1,166 @@
+Cập nhật Thiết kế Cơ sở dữ liệu
+1. Bảng User_Account (Tài khoản Người dùng)
+   Mô tả: Lưu trữ thông tin đăng nhập cho tất cả người dùng.
+   Fields:
+   - account_id (Primary Key): Mã định danh tài khoản.
+   - email: Email của người dùng (phải là duy nhất).
+   - password: Mật khẩu đã mã hóa.
+   - user_type: Loại người dùng (Admin, User, Medical Staff).
+   - created_at: Ngày tạo tài khoản.
+   - updated_at: Ngày cập nhật thông tin.
+2. Bảng User (Người dùng)
+   Mô tả: Lưu trữ thông tin cá nhân của người dùng chưa có tài khoản và người hiến máu.
+   Fields:
+   - user_id (Primary Key): Mã định danh người dùng.
+   - account_id (Foreign Key): Liên kết đến bảng User_Account.
+   - full_name: Họ và tên người dùng.
+   - phone_number: Số điện thoại liên hệ.
+   - address: Địa chỉ liên hệ.
+   - dob: Ngày sinh.
+   - blood_type: Nhóm máu.
+   - is_donor (boolean): Xác định nếu người dùng là người hiến máu.
+   - profile_picture: Hình ảnh của người dùng.
+   - created_at: Ngày tạo hồ sơ.
+   - updated_at: Ngày cập nhật thông tin.
+3. Bảng Donor_Profile (Hồ sơ Người hiến máu)
+   Mô tả: Lưu trữ thông tin y tế của người hiến máu.
+   Fields:
+   - profile_id (Primary Key): Mã định danh hồ sơ người hiến máu.
+   - user_id (Foreign Key): Liên kết đến bảng User.
+   - weight: Cân nặng của người hiến máu.
+   - height: Chiều cao của người hiến máu.
+   - blood_pressure: Huyết áp của người hiến máu.
+   - hemoglobin_level: Mức độ hemoglobin.
+   - medical_history: Tiền sử bệnh lý.
+   - last_donation_date: Ngày hiến máu gần nhất.
+   - is_eligible (boolean): Xác định người này đủ điều kiện hiến máu hay không.
+   - profile_picture: Hình ảnh của người hiến máu.
+   - created_at: Ngày tạo hồ sơ.
+   - updated_at: Ngày cập nhật thông tin.
+4. Bảng Donation_History (Lịch sử Hiến máu)
+   Mô tả: Lưu trữ lịch sử các lần hiến máu của người dùng.
+   Fields:
+   - history_id (Primary Key): Mã định danh lịch sử hiến máu.
+   - user_id (Foreign Key): Liên kết đến bảng User.
+   - event_id (Foreign Key): Liên kết đến bảng Event (Sự kiện hiến máu).
+   - donation_date: Ngày hiến máu.
+   - blood_amount: Số lượng máu hiến (ml).
+   - status: Trạng thái (thành công, thất bại, huỷ).
+   - feedback: Phản hồi từ người hiến máu sau sự kiện.
+5. Bảng Event (Sự kiện Hiến máu)
+   Mô tả: Quản lý các sự kiện hiến máu.
+   Fields:
+   - event_id (Primary Key): Mã định danh sự kiện.
+   - title: Tên sự kiện.
+   - description: Mô tả sự kiện.
+   - location: Địa điểm tổ chức.
+   - start_time: Thời gian bắt đầu.
+   - end_time: Thời gian kết thúc.
+   - expected_blood_units: Số lượng đơn vị máu dự kiến.
+   - urgent_blood_type: Nhóm máu khẩn cấp (nếu có).
+   - organizer_id (Foreign Key): Liên kết đến bảng Medical_Staff.
+   - category_id (Foreign Key): Liên kết đến bảng Event_Category để phân loại sự kiện.
+   - image_url: Đường dẫn đến hình ảnh của sự kiện.
+   - created_at: Ngày tạo bài viết.
+   - updated_at: Ngày cập nhật bài viết.
+6. Bảng Medical_Staff (Nhân viên Y tế)
+   Mô tả: Lưu trữ thông tin về nhân viên y tế.
+   Fields:
+   - staff_id (Primary Key): Mã định danh nhân viên.
+   - account_id (Foreign Key): Liên kết đến bảng User_Account.
+   - full_name: Họ và tên nhân viên y tế.
+   - hospital_id (Foreign Key): Liên kết đến bảng Hospital.
+   - phone_number: Số điện thoại liên hệ.
+   - role: Vai trò của nhân viên y tế (Bác sĩ, Điều dưỡng,...).
+   - profile_picture: Hình ảnh của nhân viên y tế.
+   - created_at: Ngày tạo hồ sơ.
+   - updated_at: Ngày cập nhật thông tin.
+7. Bảng Hospital (Bệnh viện)
+   Mô tả: Quản lý thông tin về bệnh viện.
+   Fields:
+   - hospital_id (Primary Key): Mã định danh bệnh viện.
+   - account_id (Foreign Key): Liên kết đến bảng User_Account để cho phép bệnh viện đăng nhập vào hệ thống.
+   - hospital_name: Tên bệnh viện.
+   - address: Địa chỉ bệnh viện.
+   - contact_number: Số điện thoại liên hệ.
+   - blood_storage: Lượng máu tồn kho.
+   - role: Vai trò của bệnh viện (quản lý kho máu, yêu cầu máu, báo cáo,...).
+   - created_at: Ngày tạo hồ sơ bệnh viện.
+   - updated_at: Ngày cập nhật thông tin.
+8. Bảng Blood_Storage (Kho máu)
+   Mô tả: Quản lý lượng máu nhập và xuất kho.
+   Fields:
+   - storage_id (Primary Key): Mã định danh kho máu.
+   - hospital_id (Foreign Key): Liên kết đến bảng Hospital.
+   - blood_type: Nhóm máu (A, B, AB, O).
+   - quantity: Số lượng máu hiện có (ml).
+   - expiry_date: Ngày hết hạn của máu.
+   - created_at: Ngày nhập kho.
+   - updated_at: Ngày cập nhật thông tin.
+9. Bảng Blood_Request (Yêu cầu Máu)
+   Mô tả: Lưu trữ yêu cầu cung cấp máu từ bệnh viện.
+   Fields:
+   - request_id (Primary Key): Mã định danh yêu cầu máu.
+   - hospital_id (Foreign Key): Liên kết đến bảng Hospital.
+   - blood_type: Nhóm máu cần yêu cầu.
+   - requested_quantity: Số lượng máu cần cung cấp (ml).
+   - status: Trạng thái yêu cầu (Đang xử lý, Hoàn thành, Bị từ chối).
+   - created_at: Ngày tạo yêu cầu.
+   - updated_at: Ngày cập nhật trạng thái.
+10. Bảng Admin (Quản trị viên)
+   Mô tả: Quản lý thông tin của quản trị viên.
+   Fields:
+   - admin_id (Primary Key): Mã định danh quản trị viên.
+   - account_id (Foreign Key): Liên kết đến bảng User_Account.
+   - full_name: Họ và tên quản trị viên.
+   - created_at: Ngày tạo tài khoản.
+   - updated_at: Ngày cập nhật thông tin.
+11. Bảng Reports (Báo cáo Thống kê)
+   Mô tả: Lưu trữ các báo cáo thống kê liên quan đến hiến máu.
+   Fields:
+   - report_id (Primary Key): Mã định danh báo cáo.
+   - total_donors: Tổng số người hiến máu.
+   - successful_donations: Số lượt hiến máu thành công.
+   - failed_donations: Số lượt hiến máu thất bại.
+   - urgent_responses: Số lượng người đăng ký sau thông báo khẩn cấp.
+   - blood_type_distribution: Phân bố số lượng người hiến máu theo nhóm máu (biểu đồ tròn).
+   - health_status_distribution: Phân bố số người đủ và không đủ điều kiện hiến máu.
+   - created_at: Ngày tạo báo cáo.
+12. Bảng Blood_Inventory_Transaction (Giao dịch Lưu trữ Máu)
+   Mô tả: Ghi lại lịch sử nhập và xuất kho máu từ bệnh viện.
+   Fields:
+   - transaction_id (Primary Key): Mã định danh giao dịch.
+   - hospital_id (Foreign Key): Liên kết đến bảng Hospital.
+   - blood_type: Nhóm máu (A, B, AB, O).
+   - transaction_type: Loại giao dịch (Nhập kho hoặc Xuất kho).
+   - quantity: Số lượng máu thực hiện giao dịch (ml).
+   - transaction_date: Ngày thực hiện giao dịch.
+   - request_id (Foreign Key, nullable): Liên kết đến bảng Blood_Request nếu giao dịch là do yêu cầu cung cấp máu.
+   - created_at: Ngày tạo giao dịch.
+   - updated_at: Ngày cập nhật giao dịch.
+13. Bảng Donation_Certificate (Chứng nhận Hiến máu)
+   Mô tả: Lưu trữ thông tin về chứng nhận hiến máu của người hiến máu.
+   Fields:
+   - certificate_id (Primary Key): Mã định danh chứng nhận.
+   - user_id (Foreign Key): Liên kết đến bảng User.
+   - donation_id (Foreign Key): Liên kết đến bảng Donation_History.
+   - certificate_date: Ngày cấp chứng nhận.
+   - certificate_number: Số chứng nhận (để dễ dàng theo dõi và tra cứu).
+   - created_at: Ngày tạo chứng nhận.
+   - updated_at: Ngày cập nhật thông tin chứng nhận.
+14. Bảng Gift_History (Lịch sử Phần quà)
+   Mô tả: Ghi lại lịch sử các phần quà (tiền mặt hoặc nhu yếu phẩm) tặng kèm cho người hiến máu.
+   Fields:
+   - gift_id (Primary Key): Mã định danh phần quà.
+   - donation_id (Foreign Key): Liên kết đến bảng Donation_History.
+   - gift_type: Loại phần quà (Tiền mặt, Nhu yếu phẩm, Khác).
+   - gift_description: Mô tả chi tiết về phần quà.
+   - gift_value: Giá trị của phần quà (nếu là tiền mặt thì là số tiền, nếu là nhu yếu phẩm thì có thể để giá trị ước tính).
+   - gift_date: Ngày tặng quà.
+   - created_at: Ngày tạo bản ghi.
+   - updated_at: Ngày cập nhật thông tin.
+15. Bảng Event_Category (Danh mục Sự kiện)
+   Mô tả: Quản lý các danh mục cho sự kiện hiến máu.
+   Fields:
+   - category_id (Primary Key): Mã định danh danh mục.
+   - category_name: Tên danh mục (ví dụ: "Sự kiện định kỳ", "Sự kiện khẩn cấp", "Sự kiện kêu gọi hiến máu").
